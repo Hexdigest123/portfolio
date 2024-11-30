@@ -5,7 +5,7 @@ import HeaderItem from "./HeaderItem";
 import { useState } from "react";
 
 export default function Header() {
-  const [burgerMenu, setBurgerMenu] = useState(true);
+  const [burgerMenu, setBurgerMenu] = useState(false);
   const [availablePages, setAvailablePages] = useState([
     { name: "Home", path: "/" },
     { name: "Clients", path: "/clients" },
