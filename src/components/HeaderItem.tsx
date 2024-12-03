@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 interface Props {
   href: string,
   src: string,
@@ -9,8 +11,8 @@ export default function HeaderItem(props: Props) {
   return (
     <>
       {props.style
-        ? <a href={props.href}><img style={props.style} src={props.src} alt={props.alt} /></a>
-        : <a href={props.href}><img src={props.src} alt={props.alt} /></a>}
+        ? <Link href={props.href}><img style={props.style} src={props.src} alt={props.alt} /></Link>
+        : <Link href={props.href}><img src={props.src} alt={props.alt} /></Link>}
     </>
   );
 }
