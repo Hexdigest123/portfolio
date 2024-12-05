@@ -16,7 +16,7 @@ export default function BurgerMenu(props: Props) {
         ))}
       </ul>
       <div className="w-3/4 mx-auto flex flex-row justify-between items-center md:justify-center md:gap-x-12">
-        <a href="https://github.com/Hexdigest123"><img src="github.svg" alt="GitHub Logo" /></a>
+        <a href="https://github.com/Hexdigest123"><img src="github-native.svg" alt="GitHub Logo" /></a>
         <a href="mailto:pierre@merckel.dev"><img src="mail.svg" alt="Mail Symbol Icon" /></a>
         <a href="https://signal.me/#eu/z85rCjlu-cVfNDPThQwQ3yhGjiUjy2IGs7FZi_gpNAncFxrNmNVPGLv1j0iXiy6x"><img src="signal.svg" alt="Signal Logo" /></a>
       </div>
