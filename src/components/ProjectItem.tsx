@@ -19,14 +19,17 @@ export default function(props: Props) {
   })
 
   return (
-    <div className="w-full h-64 rounded-b-xl flex justify-between flex-col bg-no-repeat bg-contain" style={{ backgroundImage: `url('${props.bgImage}')` }}>
+    <div className="w-full h-64 rounded-b-xl flex justify-between flex-col bg-no-repeat bg-contain md:bg-cover" style={{ backgroundImage: `url('${props.bgImage}')` }}>
       <div className="flex justify-between items-center">
         <Link href={props.href} className="bg-accent text-white font-bold text-xl py-2 px-4 rounded-br-xl">{props.projectName}</Link>
-        <button className="bg-accent text-white font-bold text-xl py-2 px-4 rounded-bl-xl" onClick={() => { setShowSkills(!showSkills) }}>Skills</button>
+        <button className="bg-accent text-white font-bold text-xl py-2 px-4 rounded-bl-xl flex justify-between items-center gap-2" onClick={() => { setShowSkills(!showSkills); setTimeout(() => { setShowSkills(false) }, 15000) }}>
+          <span>Tech</span>
+          <Image src={"pointer.svg"} alt="Pointer Icon" width={16} height={16} className="invert"></Image>
+        </button>
       </div>
       {
         showSkills ?
-          <div className="p-4 flex justify-evenly items-center flex-wrap">
+          <div className="py-2 flex justify-evenly items-center flex-wrap bg-accent">
             {skillList}
           </div>
           : null
