@@ -13,7 +13,7 @@ export default function(props: Props) {
       <p className="text-xl font-bold">{props.title}</p>
       <p>{props.company}</p>
       <p>{props.duration}</p>
-      <div className="w-1/2 h-1 bg-black mx-auto my-4"></div>
+      <div className="w-10 h-1 bg-black mx-auto my-8 rounded"></div>
     </Link>
   )
 }

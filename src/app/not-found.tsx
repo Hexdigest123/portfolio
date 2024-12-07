@@ -11,7 +11,7 @@ export default function NotFound() {
       <button
         type="button"
         onClick={() => { router.push("/") }}
-        className="block w-1/2 md:w-1/6 bg-red-700 p-4 rounded-xl text-white font-bold text-xl"
+        className="block w-1/2 md:w-1/6 bg-accent p-4 rounded-xl text-white font-bold text-xl"
       >Return to Home</button>
     </div>
   )

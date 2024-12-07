@@ -10,7 +10,7 @@ export default function Header() {
     { name: "Home", path: "/" },
     { name: "Clients", path: "/clients" },
     { name: "Projects", path: "/projects" },
-    { name: "Education", path: "/education" },
+    { name: "Work", path: "/work" },
   ])
 
   return (

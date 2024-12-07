@@ -10,7 +10,7 @@ export default function Projects() {
       <button
         type="button"
         onClick={() => { router.push("/") }}
-        className="block w-1/2 bg-red-700 p-4 rounded-xl text-white font-bold text-xl mx-auto"
+        className="block w-1/2 bg-accent p-4 rounded-xl text-white font-bold text-xl mx-auto"
       >Return to Home</button>
     </section>
   )
