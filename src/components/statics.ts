@@ -21,18 +21,23 @@ export const WORK_PLACES: {
 
 }[] = [
     {
+      title: "Intern",
+      company: "netTrek GmbH & Co. KG",
+      duration: "Today - 2024",
+      href: "https://nettrek.de"
+    },
+    {
       title: "Student",
       company: "Uni Duisburg-Essen (UDE)",
-      duration: "2024 - 2022",
+      duration: "Today - 2022",
       href: "https://www.uni-due.de/"
     },
     {
-      title: "Software Developer & Director",
+      title: "Software Developer",
       company: "Merckel & Witzdam GbR",
       duration: "2024 - 2022",
       href: "https://logiqit.de"
     },
   ]
 
-
-
+export const BUILD = false

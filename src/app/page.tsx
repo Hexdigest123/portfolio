@@ -1,18 +1,47 @@
 import BaseButton from "@/components/BaseButton";
 import ProjectItem from "@/components/ProjectItem";
-import { SkillIcons } from "@/components/statics";
+import { SkillIcons, BUILD } from "@/components/statics";
+import { headers } from "next/headers";
+
 
 export default function Home() {
+
+  const userInformation = async () => {
+    "use server"
+
+    const headerList = await headers()
+    let userInformation = {
+      ip: "0.0.0.0",
+      country: "Unknown",
+      city: "Unknown"
+    }
+    if (BUILD) {
+      const res = await fetch(`http://ip-api.com/json/${headerList.get("x-forwarded-for")}`)
+      if (res.ok) {
+        const dataResponse = await res.json()
+        userInformation.ip = dataResponse.query
+        userInformation.country = dataResponse.country
+        userInformation.city = dataResponse.city
+      } else {
+        console.error(`Something wen't wrong: ${res.status} - ${res.statusText}`)
+      }
+
+    }
+    return (
+      <div className="font-bold mb-2 md:text-2xl">
+        <p>{userInformation.ip}</p>
+        <p>{userInformation.country}</p>
+        <p>{userInformation.city}</p>
+      </div>
+    )
+  }
+
   return (
     <>
       <section className="px-6 mb-12">
         <h1 className="md:text-5xl text-3xl text-center font-bold mb-8">Welcome!</h1>
         <div className="md:w-1/2  md:mx-auto">
-          <div className="font-bold mb-2 md:text-2xl">
-            <p>101.101.101.101</p>
-            <p>Some-Where in Germany</p>
-            <p>Some City</p>
-          </div>
+          {userInformation()}
 
           <p className="mb-6 md:text-xl">If this information applies to you, you might be interested in the following article.</p>
           <BaseButton text="Read article!" href="#" extraClass="mx-auto block" />
@@ -26,9 +55,7 @@ export default function Home() {
             skills={[SkillIcons.github, SkillIcons.neovim, SkillIcons.astro, SkillIcons.tailwind, SkillIcons.docker]}
             bgImage="logiqit.webp"
             href="https://logiqit.de" />
-
         </div>
-
       </section>
       <section className="px-6 mb-12 md:w-1/2 md:mx-auto md:px-0">
         <h2 className="md:text-4xl text-2xl font-bold mb-8">Who am I?</h2>
