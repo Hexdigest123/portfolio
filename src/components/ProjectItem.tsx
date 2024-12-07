@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { SkillIcons } from "./SkillIcons"
+import { SkillIcons } from "@/components/statics"
 import Image from "next/image"
 
 

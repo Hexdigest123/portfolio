@@ -1,6 +1,6 @@
 import ProjectStats from "@/components/StatsBar";
 import ProjectItem from "@/components/ProjectItem";
-import { SkillIcons } from "@/components/SkillIcons";
+import { SkillIcons } from "@/components/statics";
 
 export default function Clients() {
   return (

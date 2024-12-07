@@ -1,6 +1,6 @@
 import BaseButton from "@/components/BaseButton";
 import ProjectItem from "@/components/ProjectItem";
-import { SkillIcons } from "@/components/SkillIcons";
+import { SkillIcons } from "@/components/statics";
 
 export default function Home() {
   return (
