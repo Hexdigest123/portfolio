@@ -35,7 +35,9 @@ export default function BlogList() {
     }).then(async (res: Response) => {
       const data = await res.json()
 
-      blogItems = data.results.map((item: any) => {
+      const filtered_data = data.results.filter((item: any) => { return item.public_url !== null })
+
+      blogItems = filtered_data.map((item: any) => {
         let image = undefined
         switch (item.cover?.type) {
           case "file":

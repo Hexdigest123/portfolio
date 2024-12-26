@@ -37,9 +37,10 @@ export default async function BlogItem({
 
   if (response.ok) {
     const data = await response.json()
-    console.log(data)
-    if (data.results.length > 0) {
-      const url = data.results[0].public_url
+    const filtered_data = data.results.filter((item: any) => { return item.public_url !== null })
+
+    if (filtered_data.length > 0) {
+      const url = filtered_data[0].public_url
       return redirect(url)
     } else {
       notFound()
