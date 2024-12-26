@@ -5,7 +5,7 @@ interface Props {
 export default function BurgerMenu(props: Props) {
   return (
     <div className="absolute w-full h-full bg-[rgba(255,255,255,1)] z-20">
-      <ul className="w-3/4 mx-auto p-6 my-8">
+      <ul className="w-3/4 mx-auto p-6 mt-8 h-3/4">
         {props.pages.map((page, index) => (
           <li key={index} className="mb-8">
             <a className="text-4xl md:text-5xl font-bold flex flex-row items-center justify-between" href={page.path}>

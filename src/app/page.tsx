@@ -22,10 +22,7 @@ export default function Home() {
         userInformation.ip = dataResponse.query
         userInformation.country = dataResponse.country
         userInformation.city = dataResponse.city
-      } else {
-        console.error(`Something wen't wrong: ${res.status} - ${res.statusText}`)
       }
-
     }
     return (
       <div className="font-bold mb-2 md:text-2xl">
