@@ -7,10 +7,8 @@ import { headers } from "next/headers";
 export default function Home() {
 
   const userInformation = async () => {
-    "use server"
-
     const headerList = await headers()
-    let userInformation = {
+    const userInformation = {
       ip: "0.0.0.0",
       country: "Unknown",
       city: "Unknown"
@@ -41,7 +39,7 @@ export default function Home() {
           {userInformation()}
 
           <p className="mb-6 md:text-xl">If this information applies to you, you might be interested in the following article.</p>
-          <BaseButton text="Read article!" href="#" extraClass="mx-auto block" />
+          <BaseButton text="Read article!" href="/blog/how-to-be-more-private-online" extraClass="mx-auto block" />
         </div>
       </section>
       <section className="px-6 mb-12 md:w-1/2 md:mx-auto md:px-0">
