@@ -14,30 +14,29 @@ export enum SkillIcons {
 }
 
 export const WORK_PLACES: {
-  title: string
-  company: string
-  duration: string
-  href: string
-
+  title: string;
+  company: string;
+  duration: string;
+  href: string;
 }[] = [
     {
-      title: "Intern",
+      title: "Software Engineer",
       company: "netTrek GmbH & Co. KG",
       duration: "Today - 2024",
-      href: "https://nettrek.de"
+      href: "https://nettrek.de",
     },
     {
       title: "Student",
       company: "Uni Duisburg-Essen (UDE)",
       duration: "Today - 2022",
-      href: "https://www.uni-due.de/"
+      href: "https://www.uni-due.de/",
     },
     {
       title: "Software Developer",
       company: "Merckel & Witzdam GbR",
       duration: "2024 - 2022",
-      href: "https://logiqit.de"
+      href: "https://logiqit.de",
     },
-  ]
+  ];
 
-export const BUILD = false
+export const BUILD = false;
