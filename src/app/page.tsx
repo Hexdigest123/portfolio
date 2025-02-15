@@ -13,7 +13,7 @@ export default function Home() {
     };
     if (BUILD) {
       const res = await fetch(
-        `http://ip-api.com/json/${headerList.get("x-forwarded-for")}`,
+        `http://ip-api.com/json/${headerList.get("x-forwarded-for")?.split(",")[0]}`,
       );
       if (res.ok) {
         const dataResponse = await res.json();
@@ -51,8 +51,8 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="px-6 mb-12 md:w-1/2 md:mx-auto md:px-0">
-        <h2 className="md:text-4xl text-2xl font-bold mb-8">Recent Project</h2>
+      <section className="px-6 md:mb-8 md:w-1/2 md:mx-auto md:px-0">
+        <h2 className="md:text-4xl text-2xl font-bold mb-8">Recent Work</h2>
         <div className="md:w-3/4 md:mx-auto">
           <ProjectItem
             projectName="LogiQ IT"
@@ -72,9 +72,9 @@ export default function Home() {
         <h2 className="md:text-4xl text-2xl font-bold mb-8">Who am I?</h2>
         <div className="w-full mb-8">
           <img
-            src="profile.svg"
+            src="profile.webp"
             alt="Picture of Pierre-Maurice Merckel"
-            className="mx-auto mb-2"
+            className="mx-auto mb-2 max-w-32 max-h-32"
           />
           <div className="text-center">
             <em className="text-lg">Student</em>

@@ -22,7 +22,7 @@ export default function(props: Props) {
     );
   });
   return (
-    <div className="w-full h-32 bg-accent text-white grid grid-cols-2 grid-rows-1 gap-4 items-center">
+    <div className="w-full h-32 bg-accent text-white grid grid-cols-2 grid-rows-1 gap-4 items-center rounded">
       {stats}
     </div>
   );

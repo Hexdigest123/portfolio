@@ -40,3 +40,5 @@ export const WORK_PLACES: {
   ];
 
 export const BUILD = false;
+
+export const BASE_URL = "http://localhost:3000";

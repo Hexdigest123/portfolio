@@ -3,8 +3,9 @@ interface Props {
 }
 
 export default function BurgerMenu(props: Props) {
+  document.body.style.overflow = "hidden";
   return (
-    <div className="absolute w-full h-full bg-[rgba(30,30,30,1)] z-20">
+    <div className="fixed w-full h-full bg-[rgba(30,30,30,1)] z-20">
       <ul className="w-3/4 mx-auto p-6 mt-8 h-3/4">
         {props.pages.map((page, index) => (
           <li key={index} className="mb-8">
