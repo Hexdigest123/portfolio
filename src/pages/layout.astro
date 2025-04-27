@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const navClass = "py-2 px-6 text-text rounded-4xl font-bold";
+---
+
+<html lang="de" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="h-full m-0">
+    <div class="min-h-full relative pb-20">
+      <header>
+        <nav class="flex justify-around mt-4">
+          <a
+            href="/"
+            class:list={[navClass, Astro.url.pathname === "/" && "bg-primary"]}
+          >
+            Home
+          </a>
+          <a
+            href="/projects"
+            class:list={[
+              navClass,
+              Astro.url.pathname === "/projects" && "bg-primary",
+            ]}
+          >
+            Projects
+          </a>
+          <a
+            href="/blog"
+            class:list={[
+              navClass,
+              Astro.url.pathname === "/blog" && "bg-primary",
+            ]}
+          >
+            Blog
+          </a>
+        </nav>
+      </header>
+      <main class="px-4 py-5">
+        <slot />
+      </main>
+      <footer class="absolute bottom-5 w-full text-center py-4">
+        <p>
+          Copyright © 2024 Pierre-Maurice Merckel.<br /> All rights reserved.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

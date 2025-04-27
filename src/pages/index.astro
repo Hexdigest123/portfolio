@@ -1,0 +1,59 @@
+---
+export const prerender = false;
+import Layout from "./layout.astro";
+interface IUserInfo {
+  ip: string;
+  country: string;
+  city: string;
+}
+const userInfo: IUserInfo = {
+  ip: "0.0.0.0",
+  country: "Unknown",
+  city: "Unknown",
+};
+
+if (import.meta.env.BUILD && import.meta.env.BUILD === "true") {
+  try {
+    const forwardedFor = Astro.request.headers.get("x-forwarded-for");
+    let clientIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "0.0.0.0";
+
+    if (clientIp === "0.0.0.0") {
+      clientIp = Astro.clientAddress;
+      if (clientIp === "0.0.0.0") {
+        throw Error("no valid ip found");
+      }
+    }
+
+    const res = await fetch(`http://ip-api.com/json/${clientIp}`);
+
+    if (res.ok) {
+      const dataResponse = await res.json();
+      userInfo.ip = dataResponse.query;
+      userInfo.country = dataResponse.country;
+      userInfo.city = dataResponse.city;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+---
+
+<Layout title="Merckel.dev - Home">
+  <section class="mx-auto text-center">
+    <h1 class="text-header font-bold">Welcome!</h1>
+    <div class="text-subheader font-semibold my-5">
+      <p>{userInfo.ip}</p>
+      <p>{userInfo.city}</p>
+      <p>{userInfo.country}</p>
+    </div>
+    <p class="text-text max-w-[90%] w-full mx-auto mb-5">
+      If this information applies to you, you might be interested in the
+      following article.
+    </p>
+    <a
+      href="#"
+      class="block px-8 py-2 rounded-2xl bg-primary font-bold max-w-1/2 mx-auto"
+      >Read more</a
+    >
+  </section>
+</Layout>
