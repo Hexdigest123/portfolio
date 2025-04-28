@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  date: string;
+  slug: string;
+}
+const { title, image, date, slug } = Astro.props;
+---
+
+<a class="flex flex-col justify-center items-center" href={`/blog/${slug}`}>
+  <img
+    src={image}
+    alt="test"
+    class="mb-5 rounded max-w-64 max-h-64 md:max-w-1/4 md:max-h-1/4"
+  />
+  <p class="text-subheader font-semibold">{title}</p>
+  <p class="text-gray-500">{date}</p>
+</a>

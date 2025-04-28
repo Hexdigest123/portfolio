@@ -1,0 +1,49 @@
+---
+export const prerender = false;
+
+import Layout from "../layout.astro";
+import BlogCard from "../../components/blogCard.astro";
+const response = await fetch(
+  `https://api.notion.com/v1/databases/${import.meta.env.DATABASE_ID}/query`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${import.meta.env.NOTION_KEY}`,
+      "Notion-Version": "2022-06-28",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      filter: {
+        property: "Category",
+        select: {
+          equals: "Blog",
+        },
+      },
+      sorts: [
+        {
+          property: "Erstellt",
+          direction: "descending",
+        },
+      ],
+    }),
+  },
+);
+
+const data = await response.json();
+---
+
+<Layout title="Merckel.dev - Blog">
+  <section class="mx-auto text-center mb-13">
+    <h1 class="text-header font-bold">Blog</h1>
+  </section>
+  {
+    data.results.map((item: any) => (
+      <BlogCard
+        title={item.properties.Name.title[0].text.content}
+        image={item.cover.file.url}
+        date={new Date(item.created_time).toLocaleDateString()}
+        slug={item.properties.Slug.rich_text[0].plain_text}
+      />
+    ))
+  }
+</Layout>

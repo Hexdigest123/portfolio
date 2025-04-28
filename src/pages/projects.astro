@@ -1,5 +1,110 @@
 ---
 import Layout from "./layout.astro";
+import ProjectCard from "../components/projectCard.astro";
+const projectCard: { name: string; href: string; image: string }[] = [
+  {
+    name: "LogiQ IT",
+    href: "https://logiqit.de",
+    image: "logiqit.webp",
+  },
+  {
+    name: "Marler Bestattung",
+    href: "https://marler-bestattungen.de/",
+    image: "bestattung.webp",
+  },
+  {
+    name: "Stimberg Physio",
+    href: "https://stimberg-physio.de/",
+    image: "stimberg.webp",
+  },
+  {
+    name: "Buendnis Recklinghausen",
+    href: "https://buendnis-recklinghausen.de/",
+    image: "buendnis.webp",
+  },
+  {
+    name: "Med Mobil",
+    href: "https://med-mobild.de/",
+    image: "medmobil.webp",
+  },
+];
 ---
 
-<Layout title="Merckel.dev - Projects" />
+<Layout title="Merckel.dev - Projects">
+  <section class="mx-auto text-center mb-13">
+    <h1 class="text-header font-bold">Projects</h1>
+  </section>
+  <section
+    class="w-full bg-primary h-32 flex justify-around items-center rounded-lg md:w-1/4 md:mx-auto"
+  >
+    <div class="text-subheader text-center font-semibold">
+      <p>13K</p>
+      <p>Visitor</p>
+    </div>
+    <div class="text-subheader text-center font-semibold">
+      <p>1K</p>
+      <p>Active User</p>
+    </div>
+  </section>
+  <section class="max-w-xl mx-auto w-full my-13 px-4">
+    <div class="relative">
+      <input
+        type="text"
+        id="projectSearch"
+        placeholder="Search projects..."
+        class="w-full py-3 px-4 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+    </div>
+  </section>
+  <section
+    class="flex flex-col gap-5 my-5 md:w-1/2 md:mx-auto"
+    id="projectsContainer"
+  >
+    {
+      projectCard.map((project) => (
+        <ProjectCard
+          name={project.name}
+          href={project.href}
+          image={project.image}
+        />
+      ))
+    }
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("projectSearch");
+    const projectsContainer = document.getElementById("projectsContainer");
+    if (!projectsContainer || !searchInput) {
+      return;
+    }
+    const projectCards = Array.from(projectsContainer.children);
+
+    searchInput.addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase().trim();
+
+      projectCards.forEach((card) => {
+        const projectName = card.querySelector("h3").textContent.toLowerCase();
+        if (projectName.includes(searchTerm)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>

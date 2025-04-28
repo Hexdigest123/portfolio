@@ -1,6 +1,8 @@
 ---
 export const prerender = false;
 import Layout from "./layout.astro";
+import ProjectCard from "../components/projectCard.astro";
+
 interface IUserInfo {
   ip: string;
   country: string;
@@ -11,6 +13,34 @@ const userInfo: IUserInfo = {
   country: "Unknown",
   city: "Unknown",
 };
+
+const projectCard: { name: string; href: string; image: string }[] = [
+  {
+    name: "LogiQ IT",
+    href: "https://logiqit.de",
+    image: "logiqit.webp",
+  },
+  {
+    name: "Marler Bestattung",
+    href: "https://www.marler-bestattungen.de/",
+    image: "bestattung.webp",
+  },
+];
+
+export enum SkillIcons {
+  github = "github.svg",
+  neovim = "neovim.svg",
+  c = "c.svg",
+  cpp = "cpp.svg",
+  next = "nextjs.svg",
+  svelte = "svelte.svg",
+  astro = "astro.svg",
+  typescript = "typescript.svg",
+  tailwind = "tailwind.svg",
+  linux = "linux.svg",
+  docker = "docker.svg",
+  bash = "bash.svg",
+}
 
 if (import.meta.env.BUILD && import.meta.env.BUILD === "true") {
   try {
@@ -46,14 +76,120 @@ if (import.meta.env.BUILD && import.meta.env.BUILD === "true") {
       <p>{userInfo.city}</p>
       <p>{userInfo.country}</p>
     </div>
-    <p class="text-text max-w-[90%] w-full mx-auto mb-5">
+    <p class="text-text max-w-[90%] w-full mx-auto mb-5 md:w-64">
       If this information applies to you, you might be interested in the
       following article.
     </p>
     <a
       href="#"
-      class="block px-8 py-2 rounded-2xl bg-primary font-bold max-w-1/2 mx-auto"
+      class="block px-8 py-2 rounded-2xl bg-primary font-bold max-w-1/2 mx-auto md:w-64"
       >Read more</a
     >
   </section>
+  <section class="flex flex-col gap-5 my-13 md:w-1/2 md:mx-auto">
+    {
+      projectCard.map((project) => (
+        <ProjectCard
+          name={project.name}
+          href={project.href}
+          image={project.image}
+        />
+      ))
+    }
+  </section>
+  <section class="md:w-1/2 md:mx-auto">
+    <img
+      src="profile.webp"
+      alt="user icon"
+      class="max-w-1/3 max-h-1/3 mx-auto md:max-w-48 md:max-h-48"
+    />
+    <div class="text-center my-4 text-subheader">
+      <p class="italic">Student</p>
+      <p class="font-semibold">Pierre-Maurice Merckel</p>
+    </div>
+    <div
+      class="flex justify-around max-w-3/4 items-center mx-auto my-4 md:w-80"
+    >
+      <a
+        href="https://signal.me/#eu/z85rCjlu-cVfNDPThQwQ3yhGjiUjy2IGs7FZi_gpNAncFxrNmNVPGLv1j0iXiy6x"
+      >
+        <img
+          src="signal.svg"
+          alt="Signal Messenger Icon"
+          class="bg-primary p-3 rounded-4xl w-16 h-12 object-contain cursor-pointer"
+        />
+      </a>
+      <a href="mailto:pierre@merckel.dev">
+        <img
+          src="mail.svg"
+          alt="Email icon"
+          class="bg-primary p-3 rounded-4xl w-32 h-12 object-contain cursor-pointer"
+          id="email"
+        />
+      </a>
+      <button id="copyKeyBtn">
+        <img
+          src="key.svg"
+          alt="Key icon"
+          class="bg-primary p-3 rounded-4xl w-16 h-12 object-contain cursor-pointer"
+        />
+      </button>
+    </div>
+    <div class="flex flex-wrap justify-around max-w-56 mx-auto">
+      {
+        [
+          SkillIcons.c,
+          SkillIcons.cpp,
+          SkillIcons.next,
+          SkillIcons.tailwind,
+          SkillIcons.typescript,
+          SkillIcons.astro,
+          SkillIcons.bash,
+          SkillIcons.github,
+          SkillIcons.neovim,
+          SkillIcons.docker,
+        ].map((skill) => {
+          return <img src={skill} alt="SkillIcon" />;
+        })
+      }
+    </div>
+  </section>
+  <div
+    id="toast"
+    class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none font-semibold"
+  >
+    Copied PGP Key to clipboard
+  </div>
 </Layout>
+
+<script>
+  function showToast() {
+    const toast = document.getElementById("toast");
+    if (toast) {
+      toast.classList.remove("opacity-0");
+      toast.classList.add("opacity-100");
+      setTimeout(() => {
+        toast.classList.remove("opacity-100");
+        toast.classList.add("opacity-0");
+      }, 3000);
+    }
+  }
+  function copyKey() {
+    const key = "Your public key here";
+    navigator.clipboard
+      .writeText(key)
+      .then(() => {
+        showToast();
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("copyKeyBtn");
+    if (button) {
+      button.addEventListener("click", copyKey);
+    }
+  });
+</script>

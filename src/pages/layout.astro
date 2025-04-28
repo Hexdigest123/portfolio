@@ -18,7 +18,7 @@ const navClass = "py-2 px-6 text-text rounded-4xl font-bold";
   <body class="h-full m-0">
     <div class="min-h-full relative pb-20">
       <header>
-        <nav class="flex justify-around mt-4">
+        <nav class="flex justify-around mt-4 md:max-w-1/4 md:mx-auto">
           <a
             href="/"
             class:list={[navClass, Astro.url.pathname === "/" && "bg-primary"]}
@@ -45,12 +45,13 @@ const navClass = "py-2 px-6 text-text rounded-4xl font-bold";
           </a>
         </nav>
       </header>
-      <main class="px-4 py-5">
+      <main class="px-4 my-13">
         <slot />
       </main>
-      <footer class="absolute bottom-5 w-full text-center py-4">
+      <footer class="absolute bottom-1 w-full text-center py-4">
         <p>
-          Copyright © 2024 Pierre-Maurice Merckel.<br /> All rights reserved.
+          Copyright © {new Date().getFullYear()} Pierre-Maurice Merckel.<br /> All
+          rights reserved.
         </p>
       </footer>
     </div>
