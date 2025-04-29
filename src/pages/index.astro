@@ -41,8 +41,7 @@ export enum SkillIcons {
   docker = "docker.svg",
   bash = "bash.svg",
 }
-
-if (import.meta.env.BUILD && import.meta.env.BUILD === "true") {
+if (import.meta.env.IPFETCH) {
   try {
     const forwardedFor = Astro.request.headers.get("x-forwarded-for");
     let clientIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "0.0.0.0";

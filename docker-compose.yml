@@ -5,11 +5,11 @@ services:
       args:
         NOTION_KEY: ${NOTION_KEY}
         DATABASE_ID: ${DATABASE_ID}
-        BUILD: ${BUILD}
+        IPFETCH: ${IPFETCH}
     container_name: portfolio
     environment:
       NOTION_KEY: ${NOTION_KEY}
       DATABASE_ID: ${DATABASE_ID}
-      BUILD: ${BUILD}
+      IPFETCH: ${IPFETCH}
     ports:
       - "8080:4321"
