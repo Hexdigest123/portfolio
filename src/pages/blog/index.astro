@@ -37,7 +37,7 @@ const data = await response.json();
     <h1 class="text-header font-bold">Blog</h1>
   </section>
   {
-    data.results.map((item: any) => (
+    data.results?.map((item: any) => (
       <BlogCard
         title={item.properties.Name.title[0].text.content}
         image={item.cover.file.url}
@@ -45,5 +45,14 @@ const data = await response.json();
         slug={item.properties.Slug.rich_text[0].plain_text}
       />
     ))
+  }
+  {
+    data.status && data.status != 200 ? (
+      <p class="text-center text-subheader">
+        Currently, there are no blog articles available.
+      </p>
+    ) : (
+      ""
+    )
   }
 </Layout>
