@@ -174,7 +174,21 @@ if (import.meta.env.IPFETCH) {
     }
   }
   function copyKey() {
-    const key = "Your public key here";
+    const key = ` 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEaCJPTBYJKwYBBAHaRw8BAQdANXpzSYUcDTVgcIHpXBKtRQwdn7EITXmKtps/
+5AGVv0m0K1BpZXJyZS1NYXVyaWNlIE1lcmNrZWwgPHBpZXJyZUBtZXJja2VsLmRl
+dj6IkwQTFgoAOxYhBJ5aYbkgY9Mm7zqheRYdbA+w5N0QBQJoIk9MAhsDBQsJCAcC
+AiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEBYdbA+w5N0QJEEBAKs0jILuDsC/rR4J
+dxhqWxzt8dk+hOHeqTTfIGaIDmb/AQDztT85yCoU1lUVih3+yasKbYqhutzsDOxe
+Onnw0JEnCbg4BGgiT0wSCisGAQQBl1UBBQEBB0BrPTOrIcM6c/2zejn3p+zvfS4m
+VXs9WbKdx/MGRbbNZQMBCAeIeAQYFgoAIBYhBJ5aYbkgY9Mm7zqheRYdbA+w5N0Q
+BQJoIk9MAhsMAAoJEBYdbA+w5N0Q9J4BAO1YRrekahnWpIn1xUpqL8KJOkdeNlMx
+CYSLcnC7swXWAP0avh7qkbYB+TZ0CiD+eucJLE5RE1fSK4aUfgC3LNBGBQ==
+=yWZD
+-----END PGP PUBLIC KEY BLOCK-----
+`;
     navigator.clipboard
       .writeText(key)
       .then(() => {
