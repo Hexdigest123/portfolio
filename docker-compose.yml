@@ -3,13 +3,9 @@ services:
     build:
       context: .
       args:
-        NOTION_KEY: ${NOTION_KEY}
-        DATABASE_ID: ${DATABASE_ID}
         IPFETCH: ${IPFETCH}
     container_name: portfolio
     environment:
-      NOTION_KEY: ${NOTION_KEY}
-      DATABASE_ID: ${DATABASE_ID}
       IPFETCH: ${IPFETCH}
     ports:
       - "8080:4321"
