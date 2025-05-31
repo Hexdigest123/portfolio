@@ -1,3 +1,3 @@
 #!/usr/bin/bash
-sudo docker rm -f $(sudo docker ps -a -q)
+sudo docker rm -f portfolio 
 sudo docker compose up --build 
