@@ -1,3 +1,4 @@
 #!/usr/bin/bash
-sudo docker rm -f portfolio 
+sudo docker stop portfolio || true
+sudo docker rm portfolio || true
 sudo docker compose up --build 

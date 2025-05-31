@@ -21,9 +21,9 @@ const projectCard: { name: string; href: string; image: string }[] = [
     image: "logiqit.webp",
   },
   {
-    name: "Marler Bestattung",
-    href: "https://www.marler-bestattungen.de/",
-    image: "bestattung.webp",
+    name: "Zendoc",
+    href: "https://zendoc.io",
+    image: "zendoc.webp",
   },
 ];
 
@@ -67,7 +67,7 @@ if (import.meta.env.IPFETCH) {
 }
 ---
 
-<Layout title="Merckel.dev - Home">
+<Layout title="Home">
   <section class="mx-auto text-center">
     <h1 class="text-header font-bold">Welcome!</h1>
     <div class="text-subheader font-semibold my-5">
@@ -155,7 +155,7 @@ if (import.meta.env.IPFETCH) {
   </section>
   <div
     id="toast"
-    class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none font-semibold"
+    class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none font-semibold z-10"
   >
     Copied PGP Key to clipboard
   </div>
